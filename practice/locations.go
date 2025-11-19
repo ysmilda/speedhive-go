@@ -20,7 +20,7 @@ type LocationListOptions struct {
 // List retrieves a collection of all (practice) locations.
 // The list can be filtered by passing in the LocationListOptions.
 func (s locationsService) List(opt *LocationListOptions) (*LocationList, error) {
-	u := fmt.Sprintf("/api/v1/locations")
+	u := "/api/v1/locations"
 	return speedhive.Get[LocationList](s.c, u, opt)
 }
 
@@ -40,9 +40,16 @@ type LocationActivitiesOptions struct {
 
 // Activities retrieves a collection of training activities by locationID.
 // The list can be filtered by passing in the LocationActivitiesOptions.
-func (s locationsService) Activities(locationID int, opt *LocationActivitiesOptions) (*ActivitiesInfoExclLocation, error) {
+func (s locationsService) Activities(locationID int, opt *LocationActivitiesOptions) (*ActivitiesInfo, error) {
 	u := fmt.Sprintf("/api/v1/locations/%d/activities", locationID)
-	return speedhive.Get[ActivitiesInfoExclLocation](s.c, u, opt)
+	return speedhive.Get[ActivitiesInfo](s.c, u, opt)
+}
+
+// Activities retrieves a collection of training activities by locationID.
+// The list can be filtered by passing in the LocationActivitiesOptions.
+func (s locationsService) ActivitiesWithSubscription(locationID int, opt *LocationActivitiesOptions) (*ActivitiesInfo, error) {
+	u := fmt.Sprintf("/api/v1/locations/%d/activitieswithsubscriptiontype", locationID)
+	return speedhive.Get[ActivitiesInfo](s.c, u, opt)
 }
 
 type SessionsByLocationAndChipCodeOptions struct {

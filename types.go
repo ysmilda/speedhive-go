@@ -6,6 +6,10 @@ import (
 	"time"
 )
 
+func Ptr[T any](v T) *T {
+	return &v
+}
+
 type SportCategoryValue string
 
 const (
@@ -336,6 +340,10 @@ func (d *Duration) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+func (d Duration) AsDuration() time.Duration {
+	return time.Duration(d)
+}
+
 type Time time.Time
 
 func (t *Time) UnmarshalJSON(b []byte) error {
@@ -371,4 +379,8 @@ func (t *Time) UnmarshalJSON(b []byte) error {
 
 	*t = Time(tm)
 	return nil
+}
+
+func (t Time) AsTime() time.Time {
+	return time.Time(t)
 }

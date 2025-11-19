@@ -16,7 +16,6 @@ type Client struct {
 	Championships *championshipsService
 	Events        *eventsService
 	Organizations *organizationsService
-	Search        *searchService
 	Sessions      *sessionsService
 }
 
@@ -33,7 +32,6 @@ func NewClient(client *http.Client) *Client {
 		Championships: &championshipsService{c: c},
 		Events:        &eventsService{c: c},
 		Organizations: &organizationsService{c: c},
-		Search:        &searchService{c: c},
 		Sessions:      &sessionsService{c: c},
 	}
 }
@@ -41,7 +39,7 @@ func NewClient(client *http.Client) *Client {
 // Health returns the health status of the API.
 // If the API is healthy, it will return nil.
 func (s Client) Health() error {
-	req, err := s.c.Request("GET", "/api/health", nil)
+	req, err := s.c.BuildRequest("GET", "/api/health", nil)
 	if err != nil {
 		return err
 	}

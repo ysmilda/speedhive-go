@@ -53,6 +53,6 @@ func (s sessionsService) GetLapdata(sessionID int, finishPosition int, opt *Sess
 
 // GetLapdataCSV retrieves the lap data for a session in CSV format.
 func (s sessionsService) GetLapdataCSV(sessionID int, finishPosition int) ([]byte, error) {
-	u := fmt.Sprintf("/api/v0.2.3/eventresults/sessions/%d/lapdata/%d/laps/csv", sessionID, finishPosition)
+	u := fmt.Sprintf("/api/v0.2.3/eventresults/sessions/%d/lapdata/%d/csv", sessionID, finishPosition)
 	return s.c.GetBody(u, nil)
 }

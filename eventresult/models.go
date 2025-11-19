@@ -5,7 +5,7 @@ import (
 )
 
 type EventDto struct {
-	EventID        int             `json:"id"`
+	ID             int             `json:"id"`
 	Name           string          `json:"name"`
 	Sport          string          `json:"sport"`
 	StartDate      speedhive.Time  `json:"startDate"`
@@ -33,7 +33,7 @@ type SessionGrouping struct {
 }
 
 type Session struct {
-	SessionID     int              `json:"id"`
+	ID            int              `json:"id"`
 	Name          string           `json:"name"`
 	Comment       string           `json:"comment"`
 	EventID       int              `json:"eventId"`
@@ -46,11 +46,11 @@ type Session struct {
 }
 
 type SessionGroup struct {
-	SessionGroupID int            `json:"id"`
-	Name           string         `json:"name"`
-	Date           speedhive.Time `json:"date"`
-	SubGroups      []SessionGroup `json:"subGroups"`
-	Sessions       []Session      `json:"sessions"`
+	ID        int            `json:"id"`
+	Name      string         `json:"name"`
+	Date      speedhive.Time `json:"date"`
+	SubGroups []SessionGroup `json:"subGroups"`
+	Sessions  []Session      `json:"sessions"`
 }
 
 type RunAnnouncements struct {
@@ -81,7 +81,7 @@ type IRunRow struct {
 }
 
 type UserInfo struct {
-	MstUserID       string               `json:"mstUserId"`
+	ID              string               `json:"mstUserId"`
 	ProductCategory ProductCategoryValue `json:"productCategory"`
 	Chip            Chip                 `json:"chip"`
 }
@@ -91,7 +91,7 @@ type Chip struct {
 }
 
 type ChampionshipData struct {
-	ID          int64                    `json:"id"`
+	ID          int                      `json:"id"`
 	Name        string                   `json:"name"`
 	Season      string                   `json:"season"`
 	Class       string                   `json:"class"`
@@ -178,7 +178,7 @@ type ChampionshipList struct {
 type Championship struct {
 	ID             int    `json:"id"`
 	Organization   int    `json:"organization"`
-	ChampionshipID int64  `json:"championshipid"`
+	ChampionshipID int    `json:"championshipid"`
 	Name           string `json:"name"`
 	Season         string `json:"season"`
 	HTML           string `json:"html"`

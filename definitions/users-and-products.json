@@ -1,0 +1,6143 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "v1",
+    "title": "Mel.Motorized.UsersAndProducts.WebApi"
+  },
+  "host": "usersandproducts-api.speedhive.com",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/api/v2/accounts/{userId}/products": {
+      "get": {
+        "tags": [
+          "AccountsProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsProductsChipsV2_GetProductsByUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of owned products",
+            "schema": {
+              "$ref": "#/definitions/ProductListDtoWithDiagnostics"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such user found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/products/chips": {
+      "get": {
+        "tags": [
+          "AccountsProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsProductsChipsV2_GetChipsByUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of owned chips",
+            "schema": {
+              "$ref": "#/definitions/ChipProductListDto"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such user found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/products/chips/{chipNumber}": {
+      "post": {
+        "tags": [
+          "AccountsProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsProductsChipsV2_PostChipByUseridChipnumber",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "204": {
+            "description": "User claimed chip"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "409": {
+            "description": "Chip already registered or credits are not activated",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "AccountsProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsProductsChipsV2_DisconnectChipByUseridChipnumber",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "204": {
+            "description": "Disconnected chip from account"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip or user found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/products/chips/code/{chipCode}": {
+      "post": {
+        "tags": [
+          "AccountsProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsProductsChipsV2_PostChipByUseridChipcodeWebsiterequest",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "websiteRequest",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "204": {
+            "description": "User claimed chip"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "409": {
+            "description": "Chip already registered or credits are not activated; The chip is a TR2 timer and cannot be registered",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "AccountsProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsProductsChipsV2_DisconnectChipByUseridChipcode",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "204": {
+            "description": "Disconnected chip from account"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip or user found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts": {
+      "post": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_CreateByNewuser",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "newUser",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateUserBindingModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_UserByIdByUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User information",
+            "schema": {
+              "$ref": "#/definitions/UserReturnModel"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such user id found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_DeleteByUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "202": {
+            "description": "The deletion process has been started"
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/registration/resendMail": {
+      "post": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_ResendRegistrationConfirmationByUsermodel",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userModel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserBindingModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/registration/activate": {
+      "post": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_ActivateAccountByConfirmation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "confirmation",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ActivateAccountBindingModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/password/requestReset": {
+      "put": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_RequestPasswordResetByConfirmation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "confirmation",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RequestPasswordResetBindingModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/password/requestReset/confirm": {
+      "post": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_ResetPasswordByConfirmation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "confirmation",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ResetPasswordBindingModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/password": {
+      "put": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_ChangePasswordByUseridChange",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "change",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ChangePasswordBindingModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/requestChange": {
+      "put": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_RequestEmailChangeByUseridRequest",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RequestEmailChangeBindingModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/requestChange/activate": {
+      "post": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_ActivateEmailChangeByUseridConfirmation",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "confirmation",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ActivateEmailChangeBindingModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/requestChange/cancel": {
+      "post": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_CancelEmailChangeByUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/email/{email}": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_UserByEmailByEmail",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User information",
+            "schema": {
+              "$ref": "#/definitions/UserReturnModel"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such email found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/email": {
+      "put": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_UserByEmailByUsermodel",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userModel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserBindingModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User information",
+            "schema": {
+              "$ref": "#/definitions/UserReturnModel"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such email found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/profiles": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_GetProfilesListByUserlist",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userList.ids",
+            "in": "query",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of user profiles",
+            "schema": {
+              "$ref": "#/definitions/ProfileListReturnModel"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_PostProfilesListByUserlist",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userList",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserIdListBindingModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of user profiles",
+            "schema": {
+              "$ref": "#/definitions/ProfileListReturnModel"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/profiles": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_ProfileByUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile",
+            "schema": {
+              "$ref": "#/definitions/ProfileReturnModel"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such user id found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_ProfileByUseridProfile",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "profile",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProfileBindingModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "204": {
+            "description": "Profile change was succesful"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such user id found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/avatars": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_GetAvatarsListByUserlist",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userList.ids",
+            "in": "query",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of base64 encoded user avatars",
+            "schema": {
+              "$ref": "#/definitions/AvatarListReturnModel"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_PostAvatarsListByUserlist",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userList",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserIdListBindingModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/avatars": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_AvatarByUseridMaxwidth",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "maxWidth",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_AvatarByUseridAvatar",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "avatar",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AvatarBindingModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_AvatarByUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/{userId}/privacy/practice": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_PracticePrivacyByUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Practice privacy settings",
+            "schema": {
+              "$ref": "#/definitions/PracticePrivacyReturnModel"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such user id found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "AccountsV2_PracticePrivacyByUseridPrivacy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "privacy.resultsArePrivate",
+            "in": "query",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/properties/titles": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_TitlePropertiesBy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A list of titles",
+            "schema": {
+              "$ref": "#/definitions/PropertyListReturnModel"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/properties/timezones": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_TimezonePropertiesBy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A list of timezones",
+            "schema": {
+              "$ref": "#/definitions/PropertyListReturnModel"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/properties/countries": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_CountryPropertiesBy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A list of countries",
+            "schema": {
+              "$ref": "#/definitions/PropertyListReturnModel"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/accounts/properties/languages": {
+      "get": {
+        "tags": [
+          "AccountsV2"
+        ],
+        "operationId": "AccountsV2_LanguagePropertiesBy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "A list of languages",
+            "schema": {
+              "$ref": "#/definitions/PropertyListReturnModel"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/achievements/{accountId}/overview": {
+      "get": {
+        "tags": [
+          "Achievements"
+        ],
+        "operationId": "Achievements_GetAchievementsOverviewAsyncByAccountid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/BadgesDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/achievements/{accountId}/details": {
+      "get": {
+        "tags": [
+          "Achievements"
+        ],
+        "operationId": "Achievements_GetAchievementsAsyncByAccountidAchievementtype",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "achievementType",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32",
+            "enum": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/BadgesDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/achievements/{profileId}/statistics": {
+      "get": {
+        "tags": [
+          "Achievements"
+        ],
+        "operationId": "Achievements_GetStatisticsOfUserAsyncByProfileidLookupyear",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "lookupYear",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PersonalStatisticsDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/achievements/{profileId}/statistics-filter": {
+      "get": {
+        "tags": [
+          "Achievements"
+        ],
+        "operationId": "Achievements_GetStatisticsFilterForUserAsyncByProfileid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PersonalStatisticsFiltersDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/auth/validate": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": " (Auth)",
+        "operationId": "Authentication_ValidateBy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Access token is valid"
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/claims": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": " (Auth)",
+        "operationId": "Authentication_ClaimsBy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Claims of the authenticated user"
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "operationId": "Health_IndexByCancellationtoken",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/image/id/{userId}": {
+      "get": {
+        "tags": [
+          "Image"
+        ],
+        "operationId": "Image_GetAvatarImageByAccountIdByUseridWidth",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "width",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned an image."
+          }
+        }
+      }
+    },
+    "/api/v2/image/tx/{transponder}": {
+      "get": {
+        "tags": [
+          "Image"
+        ],
+        "operationId": "Image_GetAvatarImageByTransponderByTransponderWidth",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "transponder",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "width",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returned an image."
+          }
+        }
+      }
+    },
+    "/api/v2/products/chips/types": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "operationId": "ProductsChipsV2_ChipTypesBy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "List of chip types",
+            "schema": {
+              "$ref": "#/definitions/ChipTypeListDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/{chipNumber}": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_ChipsByNumberByChipnumber",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip information",
+            "schema": {
+              "$ref": "#/definitions/ChipProductListDto"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/{chipNumber}/account": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "operationId": "ProductsChipsV2_ChipOwnerByNumberByChipnumber",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account of the chip owner",
+            "schema": {
+              "$ref": "#/definitions/ChipOwnerDto"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip or no owner found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/chipnumber/name": {
+      "put": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_UpdateChipNameByNumberByUpdatechipnamebynumbermodel",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "updateChipNameByNumberModel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateChipNameByNumberModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip name updated"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/{chipNumber}/name": {
+      "delete": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_DeleteChipNameByNumberByChipnumber",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip name removed"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/{chipNumber}/carId/{carId}/name": {
+      "delete": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_DeleteChipNameByNumberByChipnumberCarid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip name removed"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/code/{chipCode}/name": {
+      "delete": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_DeleteChipNameByNumberByChipcode",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip name removed"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/code/{chipCode}/carId/{carId}/name": {
+      "delete": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_DeleteChipNameByNumberByChipcodeCarid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip name removed"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/{chipNumber}/subscription": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_ChipSubscriptionByNumberByChipnumber",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account of the chip owner",
+            "schema": {
+              "$ref": "#/definitions/ChipSubscriptionDto"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip or no subscription found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/{chipNumber}/carId/{carId}": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_ChipByNumberByChipnumberCarid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip information",
+            "schema": {
+              "$ref": "#/definitions/ChipProductDto"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/chipnumber/carId/name": {
+      "put": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_UpdateChipNameByNumberAndCarIdByUpdatechipnamebynumberandcaridmodel",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "updateChipNameByNumberAndCarIdModel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateChipNameByNumberAndCarIdModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip name updated"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/code/{chipCode}": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_ChipsByCodeByChipcode",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip information",
+            "schema": {
+              "$ref": "#/definitions/ChipProductListDto"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/code/{chipCode}/account": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "operationId": "ProductsChipsV2_ChipOwnerByCodeByChipcode",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip owner",
+            "schema": {
+              "$ref": "#/definitions/ChipOwnerDto"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip or no owner found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/chipcode/name": {
+      "put": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_UpdateChipNameByCodeByUpdatechipnamebycodemodel",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "updateChipNameByCodeModel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateChipNameByCodeModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip name updated"
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/code/{chipCode}/subscription": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_ChipSubscriptionByCodeByChipcode",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip subscription",
+            "schema": {
+              "$ref": "#/definitions/ChipSubscriptionDto"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "403": {
+            "description": "Authenticated user is not authorized",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip or no subscription found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/code/{chipCode}/carId/{carId}": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_ChipByCodeByChipcodeCarid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chip information",
+            "schema": {
+              "$ref": "#/definitions/ChipProductDto"
+            }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          },
+          "404": {
+            "description": "No such chip found",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/code/chipcode/carId/name": {
+      "put": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_UpdateChipNameByCodeAndCarIdByUpdatechipnamebycodeandcaridmodel",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "updateChipNameByCodeAndCarIdModel",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateChipNameByCodeAndCarIdModel"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/price-list/{transponderId}": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_GetTranspondersPriceListAsyncByTransponderidCountry",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "transponderId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price list is provided",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PriceList"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/price-list/{orderId}/status": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_GetOrderStatusAsyncByOrderid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price list is provided",
+            "schema": {
+              "$ref": "#/definitions/SubscriptionOrderStatus"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/price-list/order-request": {
+      "post": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "summary": " (Auth)",
+        "operationId": "ProductsChipsV2_CreateSubscriptionOrderRequestAsyncByOrderrequest",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "orderRequest",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/OrderRequest"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order placed successfully",
+            "schema": {
+              "$ref": "#/definitions/SubscriptionOrderDetails"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v2/products/chips/{chipCode}/category": {
+      "get": {
+        "tags": [
+          "ProductsChipsV2"
+        ],
+        "operationId": "ProductsChipsV2_GetProductCategoryByChipcode",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/friends/follow/{userId}/{friendId}": {
+      "post": {
+        "tags": [
+          "SpeedhiveFriends"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveFriends_FollowFriendByUseridFriendidFollow",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "friendId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "follow",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/friends/{profileId}": {
+      "get": {
+        "tags": [
+          "SpeedhiveFriends"
+        ],
+        "operationId": "SpeedhiveFriends_GetFollowFriendsByProfileidUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get friends a user is following/followed by",
+            "schema": {
+              "$ref": "#/definitions/FollowFriendsDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/emailnotify/{userId}/{emailnotify}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetEmailNotifyByUseridEmailnotify",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "emailnotify",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/appnotify/{userId}/{appnotify}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetAppNotifyByUseridAppnotify",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appnotify",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/appnotify/eventspublished/{userId}/{eventspublished}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetEventsPublishedNotifyByUseridEventspublished",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "eventspublished",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/appnotify/friendeventspublished/{userId}/{friendeventspublished}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetFriendEventsPublishedNotifyByUseridFriendeventspublished",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "friendeventspublished",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/appnotify/friendfollowed/{userId}/{friendfollowed}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetFriendFollowedNotifyByUseridFriendfollowed",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "friendfollowed",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/appnotify/sessionstarted/{userId}/{sessionstarted}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetLiveTimingSessionStartedNotifyByUseridSessionstarted",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sessionstarted",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/appnotify/friendsessionstarted/{userId}/{friendsessionstarted}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetFriendsNotifyByUseridFriendsessionstarted",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "friendsessionstarted",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/appnotify/videouploaded/{userId}/{value}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetVideoUploadedNotifyByUseridValue",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/appnotify/eventvideouploaded/{userId}/{value}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetEventVideoUploadedNotifyByUseridValue",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "value",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/appnotify/productexpirewarning/{userId}/{productexpirewarning}": {
+      "post": {
+        "tags": [
+          "SpeedhiveNotifications"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveNotifications_SetProductExpireWarningNotifyByUseridProductexpirewarning",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "productexpirewarning",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/{userId}": {
+      "get": {
+        "tags": [
+          "SpeedhiveProfile"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveProfile_GetProfileByUseridProfileidFriendsVideosTimelineIncludeachievementIncludestatisticsLookupyear",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "profileId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "friends",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "videos",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "timeline",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "includeAchievement",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "includeStatistics",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "lookupYear",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Speedhive Profile",
+            "schema": {
+              "$ref": "#/definitions/SpeedhiveProfileDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/public/{profileId}": {
+      "get": {
+        "tags": [
+          "SpeedhiveProfile"
+        ],
+        "operationId": "SpeedhiveProfile_GetPublicProfileByProfileidUseridFriendsVideosTimelineIncludeachievementIncludestatisticsLookupyear",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "friends",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "videos",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "timeline",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "includeAchievement",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "includeStatistics",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "lookupYear",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Speedhive Profile",
+            "schema": {
+              "$ref": "#/definitions/SpeedhiveProfileDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/public/tx/{transponder}": {
+      "get": {
+        "tags": [
+          "SpeedhiveProfile"
+        ],
+        "operationId": "SpeedhiveProfile_GetPublicProfileByTransponderByTransponderUseridFriendsVideosTimelineIncludeachievementIncludestatisticsLookupyear",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "transponder",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "userId",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "friends",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "videos",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "timeline",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "includeAchievement",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "includeStatistics",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "lookupYear",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Public Speedhive Profile By Transponder",
+            "schema": {
+              "$ref": "#/definitions/SpeedhiveProfileDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/update/{userId}": {
+      "post": {
+        "tags": [
+          "SpeedhiveProfile"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveProfile_UpdateSpeedhiveProfileByUseridSpeedhiveprofile",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "speedhiveProfile",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SpeedhiveProfileDto"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/unsubscribe/{userId}": {
+      "post": {
+        "tags": [
+          "SpeedhiveProfile"
+        ],
+        "operationId": "SpeedhiveProfile_UnsubsribeByUserid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/privateprofile/{userId}/{privateProfile}": {
+      "post": {
+        "tags": [
+          "SpeedhiveProfile"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveProfile_SetPrivateProfileByUseridPrivateprofile",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "privateProfile",
+            "in": "path",
+            "required": true,
+            "type": "boolean"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/compare": {
+      "post": {
+        "tags": [
+          "SpeedhiveProfile"
+        ],
+        "operationId": "SpeedhiveProfile_CompareNamesByStringcompare",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "StringCompare",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StringCompare"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Dice Coefficient Distance",
+            "schema": {
+              "format": "int64",
+              "type": "integer"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/timeline/{profileId}": {
+      "get": {
+        "tags": [
+          "SpeedhiveTimeline"
+        ],
+        "operationId": "SpeedhiveTimeline_GetTimelineByProfileid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Speedhive Timeline",
+            "schema": {
+              "$ref": "#/definitions/TimelineDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/videos/{profileId}": {
+      "get": {
+        "tags": [
+          "SpeedhiveVideos"
+        ],
+        "operationId": "SpeedhiveVideos_GetVideosByProfileid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Speedhive Videos",
+            "schema": {
+              "$ref": "#/definitions/VideosDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/videos/event/{eventid}": {
+      "get": {
+        "tags": [
+          "SpeedhiveVideos"
+        ],
+        "operationId": "SpeedhiveVideos_GetVideosByEventid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "eventid",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Speedhive Videos",
+            "schema": {
+              "$ref": "#/definitions/VideosDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/videos/add/{userId}/{videoId}": {
+      "post": {
+        "tags": [
+          "SpeedhiveVideos"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveVideos_AddVideoByUseridVideoid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "videoId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video Added",
+            "schema": {
+              "$ref": "#/definitions/VideosDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/videos/add/{userId}": {
+      "post": {
+        "tags": [
+          "SpeedhiveVideos"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveVideos_AddVideoByUseridVideodto",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml",
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "videoDto",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VideoDto"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video Added",
+            "schema": {
+              "$ref": "#/definitions/VideosDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    },
+    "/api/v1/speedhiveprofile/videos/delete/{userId}/{videoId}": {
+      "post": {
+        "tags": [
+          "SpeedhiveVideos"
+        ],
+        "summary": " (Auth)",
+        "operationId": "SpeedhiveVideos_DeleteVideoAsyncByUseridVideoidEventid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "videoId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Video Deleted",
+            "schema": {
+              "$ref": "#/definitions/VideosDto"
+            }
+          }
+        },
+        "security": [
+          {
+            "Apikey": []
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ProductListDtoWithDiagnostics": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductDtoWithDiagnostics"
+          }
+        }
+      }
+    },
+    "ProductDtoWithDiagnostics": {
+      "type": "object",
+      "properties": {
+        "latestDiagnostics": {
+          "$ref": "#/definitions/DiagnosticsModel"
+        },
+        "firmwareUpdateStatus": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "chip": {
+          "$ref": "#/definitions/ChipDto"
+        },
+        "isFlex": {
+          "type": "boolean"
+        },
+        "isTimeLimited": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "subscription": {
+          "$ref": "#/definitions/ChipSubscriptionDto"
+        }
+      }
+    },
+    "DiagnosticsModel": {
+      "type": "object",
+      "properties": {
+        "entry_id": {
+          "type": "string"
+        },
+        "uid": {
+          "type": "string"
+        },
+        "txNumber": {
+          "type": "string"
+        },
+        "txHw": {
+          "type": "string"
+        },
+        "txFw": {
+          "type": "string"
+        },
+        "licensestatus": {
+          "type": "string"
+        },
+        "log_timestamp": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "log": {
+          "type": "string"
+        }
+      }
+    },
+    "ChipDto": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "codeNr": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "carId": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "customName": {
+          "type": "string"
+        }
+      }
+    },
+    "ChipSubscriptionDto": {
+      "type": "object",
+      "properties": {
+        "expires": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "transponderEndDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "redeemableCredits": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "type": {
+          "format": "int32",
+          "enum": [
+            0,
+            100,
+            200,
+            300,
+            400,
+            500,
+            500,
+            500,
+            600
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "ChipProductListDto": {
+      "type": "object",
+      "properties": {
+        "chipProducts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChipProductDto"
+          }
+        }
+      }
+    },
+    "ChipProductDto": {
+      "type": "object",
+      "properties": {
+        "chip": {
+          "$ref": "#/definitions/ChipDto"
+        },
+        "isFlex": {
+          "type": "boolean"
+        },
+        "isTimeLimited": {
+          "type": "boolean"
+        },
+        "state": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateUserBindingModel": {
+      "required": [
+        "email",
+        "givenName",
+        "surName"
+      ],
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "surName": {
+          "type": "string"
+        },
+        "subscribeNewsLetter": {
+          "type": "boolean"
+        }
+      }
+    },
+    "UserReturnModel": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "surName": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "accountStatus": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        }
+      }
+    },
+    "UserBindingModel": {
+      "required": [
+        "email"
+      ],
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "ActivateAccountBindingModel": {
+      "required": [
+        "activationCode",
+        "password"
+      ],
+      "type": "object",
+      "properties": {
+        "activationCode": {
+          "type": "string"
+        },
+        "password": {
+          "maxLength": 100,
+          "minLength": 6,
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "RequestPasswordResetBindingModel": {
+      "required": [
+        "email"
+      ],
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "ResetPasswordBindingModel": {
+      "required": [
+        "passwordResetCode",
+        "newPassword"
+      ],
+      "type": "object",
+      "properties": {
+        "passwordResetCode": {
+          "type": "string"
+        },
+        "newPassword": {
+          "maxLength": 100,
+          "minLength": 6,
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "ChangePasswordBindingModel": {
+      "required": [
+        "newPassword"
+      ],
+      "type": "object",
+      "properties": {
+        "newPassword": {
+          "maxLength": 100,
+          "minLength": 6,
+          "type": "string"
+        }
+      }
+    },
+    "RequestEmailChangeBindingModel": {
+      "required": [
+        "newEmail"
+      ],
+      "type": "object",
+      "properties": {
+        "newEmail": {
+          "type": "string"
+        }
+      }
+    },
+    "ActivateEmailChangeBindingModel": {
+      "required": [
+        "emailChangeActivationCode"
+      ],
+      "type": "object",
+      "properties": {
+        "emailChangeActivationCode": {
+          "type": "string"
+        }
+      }
+    },
+    "UserIdListBindingModel": {
+      "required": [
+        "ids"
+      ],
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProfileListReturnModel": {
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileReturnModel"
+          }
+        }
+      }
+    },
+    "ProfileReturnModel": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "accountStatus": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2
+          ],
+          "type": "integer"
+        },
+        "name": {
+          "$ref": "#/definitions/NameReturnModel"
+        },
+        "postalAddress": {
+          "$ref": "#/definitions/AddressReturnModel"
+        },
+        "contact": {
+          "$ref": "#/definitions/ContactReturnModel"
+        },
+        "personalDetails": {
+          "$ref": "#/definitions/PersonalDetailsReturnModel"
+        },
+        "preferences": {
+          "$ref": "#/definitions/PersonalPreferencesReturnModel"
+        }
+      }
+    },
+    "NameReturnModel": {
+      "type": "object",
+      "properties": {
+        "givenName": {
+          "type": "string"
+        },
+        "surName": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        }
+      }
+    },
+    "AddressReturnModel": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "localityName": {
+          "type": "string"
+        },
+        "stateOrProvincename": {
+          "type": "string"
+        },
+        "countryName": {
+          "type": "string"
+        }
+      }
+    },
+    "ContactReturnModel": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "telephoneNumber": {
+          "type": "string"
+        },
+        "mobileTelephoneNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "PersonalDetailsReturnModel": {
+      "type": "object",
+      "properties": {
+        "dateOfBirth": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "PersonalPreferencesReturnModel": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        }
+      }
+    },
+    "ProfileBindingModel": {
+      "required": [
+        "name",
+        "postalAddress",
+        "contact",
+        "personalDetails",
+        "preferences"
+      ],
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/NameBindingModel"
+        },
+        "postalAddress": {
+          "$ref": "#/definitions/AddressBindingModel"
+        },
+        "contact": {
+          "$ref": "#/definitions/ContactBindingModel"
+        },
+        "personalDetails": {
+          "$ref": "#/definitions/PersonalDetailsBindingModel"
+        },
+        "preferences": {
+          "$ref": "#/definitions/PersonalPreferencesBindingModel"
+        }
+      }
+    },
+    "NameBindingModel": {
+      "required": [
+        "givenName",
+        "surName"
+      ],
+      "type": "object",
+      "properties": {
+        "givenName": {
+          "type": "string"
+        },
+        "surName": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "nickName": {
+          "type": "string"
+        }
+      }
+    },
+    "AddressBindingModel": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "localityName": {
+          "type": "string"
+        },
+        "stateOrProvincename": {
+          "type": "string"
+        },
+        "countryName": {
+          "type": "string"
+        }
+      }
+    },
+    "ContactBindingModel": {
+      "type": "object",
+      "properties": {
+        "telephoneNumber": {
+          "type": "string"
+        },
+        "mobileTelephoneNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "PersonalDetailsBindingModel": {
+      "type": "object",
+      "properties": {
+        "dateOfBirth": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "PersonalPreferencesBindingModel": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        }
+      }
+    },
+    "AvatarListReturnModel": {
+      "type": "object",
+      "properties": {
+        "avatars": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AvatarReturnModel"
+          }
+        }
+      }
+    },
+    "AvatarReturnModel": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "image": {
+          "format": "byte",
+          "type": "string"
+        }
+      }
+    },
+    "AvatarBindingModel": {
+      "required": [
+        "image"
+      ],
+      "type": "object",
+      "properties": {
+        "image": {
+          "format": "byte",
+          "type": "string"
+        }
+      }
+    },
+    "PracticePrivacyReturnModel": {
+      "type": "object",
+      "properties": {
+        "resultsArePrivate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PracticePrivacyBindingModel": {
+      "required": [
+        "resultsArePrivate"
+      ],
+      "type": "object",
+      "properties": {
+        "resultsArePrivate": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PropertyListReturnModel": {
+      "type": "object",
+      "properties": {
+        "properties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "BadgesDto": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "total": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "badges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BadgeDto"
+          }
+        }
+      }
+    },
+    "BadgeDto": {
+      "type": "object",
+      "properties": {
+        "badgeType": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "type": "integer"
+        },
+        "racer": {
+          "$ref": "#/definitions/RacerDto"
+        },
+        "eventId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "eventName": {
+          "type": "string"
+        },
+        "eventDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "trackname": {
+          "type": "string"
+        },
+        "sessionId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sessionGroup": {
+          "type": "string"
+        },
+        "sessionName": {
+          "type": "string"
+        },
+        "className": {
+          "type": "string"
+        },
+        "bestLap": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "bestTime": {
+          "type": "string"
+        },
+        "bestPosition": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nrRacers": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "bestSpeed": {
+          "type": "string"
+        },
+        "nrLaps": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "nrSessions": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "podium": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RacerDto"
+          }
+        },
+        "total": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "RacerDto": {
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "position": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "accountId": {
+          "type": "string"
+        }
+      }
+    },
+    "PersonalStatisticsDto": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "filter": {
+          "type": "string"
+        },
+        "events": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sessions": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "races": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "qualification": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "practice": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "laps": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "wins": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "podiums": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "topFives": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "bestLaps": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "averagePos": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "totalPos": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "timeRaced": {
+          "type": "string"
+        }
+      }
+    },
+    "PersonalStatisticsFiltersDto": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "CancellationToken": {
+      "type": "object",
+      "properties": {
+        "isCancellationRequested": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "canBeCanceled": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "waitHandle": {
+          "$ref": "#/definitions/WaitHandle",
+          "readOnly": true
+        }
+      }
+    },
+    "WaitHandle": {
+      "type": "object",
+      "properties": {
+        "handle": {
+          "type": "object"
+        },
+        "safeWaitHandle": {
+          "$ref": "#/definitions/SafeWaitHandle"
+        }
+      }
+    },
+    "SafeWaitHandle": {
+      "type": "object",
+      "properties": {
+        "isInvalid": {
+          "type": "boolean",
+          "readOnly": true
+        },
+        "isClosed": {
+          "type": "boolean",
+          "readOnly": true
+        }
+      }
+    },
+    "ChipTypeListDto": {
+      "type": "object",
+      "properties": {
+        "chipTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ChipOwnerDto": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateChipNameByNumberModel": {
+      "required": [
+        "chipNumber",
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "chipNumber": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateChipNameByNumberAndCarIdModel": {
+      "required": [
+        "chipNumber",
+        "name",
+        "carId"
+      ],
+      "type": "object",
+      "properties": {
+        "chipNumber": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "carId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "UpdateChipNameByCodeModel": {
+      "required": [
+        "chipCode",
+        "name"
+      ],
+      "type": "object",
+      "properties": {
+        "chipCode": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateChipNameByCodeAndCarIdModel": {
+      "required": [
+        "chipCode",
+        "name",
+        "carId"
+      ],
+      "type": "object",
+      "properties": {
+        "chipCode": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "carId": {
+          "format": "int32",
+          "type": "integer"
+        }
+      }
+    },
+    "PriceList": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "vat": {
+          "format": "double",
+          "type": "number"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "priceWithVat": {
+          "format": "double",
+          "type": "number"
+        },
+        "productName": {
+          "type": "string"
+        }
+      }
+    },
+    "SubscriptionOrderStatus": {
+      "type": "object",
+      "properties": {
+        "orderId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "OrderRequest": {
+      "type": "object",
+      "properties": {
+        "account_id": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "product_code": {
+          "type": "string"
+        },
+        "return_url": {
+          "type": "string"
+        }
+      }
+    },
+    "SubscriptionOrderDetails": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "paylink": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "vat": {
+          "format": "double",
+          "type": "number"
+        },
+        "product_code": {
+          "type": "string"
+        },
+        "order_id": {
+          "type": "string"
+        }
+      }
+    },
+    "FollowFriendsDto": {
+      "type": "object",
+      "properties": {
+        "following": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FollowFriendDto"
+          }
+        },
+        "followedBy": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/FollowFriendDto"
+          }
+        }
+      }
+    },
+    "FollowFriendDto": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "myFriend": {
+          "type": "boolean"
+        }
+      }
+    },
+    "SpeedhiveProfileDto": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "emailNotify": {
+          "type": "boolean"
+        },
+        "appNotify": {
+          "type": "boolean"
+        },
+        "notifySettingsDto": {
+          "$ref": "#/definitions/NotifySettingsDto"
+        },
+        "privateProfile": {
+          "type": "boolean"
+        },
+        "followFriendsDto": {
+          "$ref": "#/definitions/FollowFriendsDto"
+        },
+        "videosDto": {
+          "$ref": "#/definitions/VideosDto"
+        },
+        "timelineDto": {
+          "$ref": "#/definitions/TimelineDto"
+        },
+        "achievement": {
+          "$ref": "#/definitions/BadgeDto"
+        },
+        "personalStats": {
+          "$ref": "#/definitions/PersonalStatisticsDto"
+        }
+      }
+    },
+    "NotifySettingsDto": {
+      "type": "object",
+      "properties": {
+        "eventPublished": {
+          "type": "boolean"
+        },
+        "friendsEventPublished": {
+          "type": "boolean"
+        },
+        "friendFollowed": {
+          "type": "boolean"
+        },
+        "liveTimingSessionStarted": {
+          "type": "boolean"
+        },
+        "liveTimingFriendsSessionStarted": {
+          "type": "boolean"
+        },
+        "videoUploaded": {
+          "type": "boolean"
+        },
+        "eventVideoUploaded": {
+          "type": "boolean"
+        },
+        "productExpireWarning": {
+          "type": "boolean"
+        }
+      }
+    },
+    "VideosDto": {
+      "type": "object",
+      "properties": {
+        "videos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/VideoDto"
+          }
+        }
+      }
+    },
+    "TimelineDto": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimelineMessageDto"
+          }
+        }
+      }
+    },
+    "VideoDto": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "eventId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sessionId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "racerName": {
+          "type": "string"
+        },
+        "racerId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "TimelineMessageDto": {
+      "type": "object",
+      "properties": {
+        "profileId": {
+          "type": "string"
+        },
+        "type": {
+          "format": "int32",
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        },
+        "utc": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "timelineName": {
+          "type": "string"
+        },
+        "racerName": {
+          "type": "string"
+        },
+        "eventName": {
+          "type": "string"
+        },
+        "eventId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "videoId": {
+          "type": "string"
+        }
+      }
+    },
+    "StringCompare": {
+      "type": "object",
+      "properties": {
+        "name1": {
+          "type": "string"
+        },
+        "name2": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Apikey": {
+      "type": "apiKey",
+      "description": "API Key Authentication",
+      "name": "Apikey",
+      "in": "header"
+    }
+  }
+}

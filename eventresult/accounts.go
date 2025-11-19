@@ -18,8 +18,8 @@ type AccountsEventsOptions struct {
 }
 
 // Events returns a list of events for a user.
-func (s accountsService) Events(userID int, opt *AccountsEventsOptions) (*EventDto, error) {
-	u := fmt.Sprintf("/api/v0.2.3/accounts/%d/events", userID)
+func (s accountsService) Events(userID string, opt *AccountsEventsOptions) (*EventDto, error) {
+	u := fmt.Sprintf("/api/v0.2.3/accounts/%s/events", userID)
 	return speedhive.Get[EventDto](s.c, u, opt)
 }
 
@@ -29,8 +29,8 @@ type AccountsEventSessionOptions struct {
 }
 
 // EventSessions returns a list of sessions for an event of a user.
-func (s accountsService) EventSessions(userID int, eventID int, opt *AccountsEventSessionOptions) ([]Session, error) {
-	u := fmt.Sprintf("/api/v0.2.3/accounts/%d/events/%d/sessions", userID, eventID)
+func (s accountsService) EventSessions(userID string, eventID int, opt *AccountsEventSessionOptions) ([]Session, error) {
+	u := fmt.Sprintf("/api/v0.2.3/accounts/%s/events/%d/sessions", userID, eventID)
 	res, err := speedhive.Get[[]Session](s.c, u, opt)
 	if err != nil {
 		return nil, err
@@ -45,8 +45,8 @@ type AccountsSessionsOptions struct {
 }
 
 // Sessions return a list of sessions for a user.
-func (s accountsService) Sessions(userID int, opt *AccountsSessionsOptions) ([]Session, error) {
-	u := fmt.Sprintf("/api/v0.2.3/accounts/%d/sessions", userID)
+func (s accountsService) Sessions(userID string, opt *AccountsSessionsOptions) ([]Session, error) {
+	u := fmt.Sprintf("/api/v0.2.3/accounts/%s/sessions", userID)
 	res, err := speedhive.Get[[]Session](s.c, u, opt)
 	if err != nil {
 		return nil, err
@@ -59,8 +59,8 @@ type AccountsSessionsClassificationOptions struct {
 	Offset *int `url:"offset,omitempty"`
 }
 
-// SessionsClassification returns a list of classifications for a session of a user.
-func (s accountsService) SessionsClassification(userID int, sessionID int, opt *AccountsSessionsClassificationOptions) (*IRunClassification, error) {
-	u := fmt.Sprintf("/api/v0.2.3/accounts/%d/sessions/%d/classification", userID, sessionID)
+// SessionClassification returns a list of classifications for a session of a user.
+func (s accountsService) SessionClassification(userID string, sessionID int, opt *AccountsSessionsClassificationOptions) (*IRunClassification, error) {
+	u := fmt.Sprintf("/api/v0.2.3/accounts/%s/sessions/%d/classification", userID, sessionID)
 	return speedhive.Get[IRunClassification](s.c, u, opt)
 }

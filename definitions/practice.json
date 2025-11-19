@@ -1,0 +1,1980 @@
+{
+  "swagger": "2.0",
+  "info": { "version": "v1", "title": "SpeedhivePracticeApi v1.8.58.0" },
+  "host": "practice-api.speedhive.com",
+  "schemes": ["http", "https"],
+  "paths": {
+    "/api/v1/accounts/{id}/training/activities": {
+      "get": {
+        "tags": ["AccountsV1"],
+        "operationId": "AccountsV1_GetByIdLocationidYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" },
+          {
+            "name": "locationId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoExclLocationDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/accounts/{id}/training/activities/years": {
+      "get": {
+        "tags": ["AccountsV1"],
+        "operationId": "AccountsV1_YearsById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of years that contain training activities.",
+            "schema": { "$ref": "#/definitions/ActivityYearCountListDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/admin/accountId/{accountId}": {
+      "get": {
+        "tags": ["Admin"],
+        "operationId": "Admin_GetByAccountidLocationidYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "accountId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "locationId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoExclLocationDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/admin/chipNumber/{chipNumber}": {
+      "get": {
+        "tags": ["Admin"],
+        "operationId": "Admin_GetByNumberByChipnumberLocationidYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "locationId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoExclLocationDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/admin/chipCode/{chipCode}": {
+      "get": {
+        "tags": ["Admin"],
+        "operationId": "Admin_GetByCodeByChipcodeLocationidYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "locationId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoExclLocationDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/chips/{chipNumber}/training/activities": {
+      "get": {
+        "tags": ["ChipsV1"],
+        "operationId": "ChipsV1_GetByNumberByChipnumberLocationidYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "locationId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoExclLocationDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/chips/{chipNumber}/carId/{carId}/training/activities": {
+      "get": {
+        "tags": ["ChipsV1"],
+        "operationId": "ChipsV1_GetByNumberByChipnumberCaridLocationidYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipNumber",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "locationId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoExclLocationDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/chips/code/{chipCode}/training/activities": {
+      "get": {
+        "tags": ["ChipsV1"],
+        "operationId": "ChipsV1_GetByCodeByChipcodeLocationidYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "locationId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoExclLocationDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/chips/code/{chipCode}/carId/{carId}/training/activities": {
+      "get": {
+        "tags": ["ChipsV1"],
+        "operationId": "ChipsV1_GetByCodeByChipcodeCaridLocationidYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "carId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "locationId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoExclLocationDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/health": {
+      "get": {
+        "tags": ["Health"],
+        "operationId": "Health_IndexBy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    },
+    "/api/v1/locations": {
+      "get": {
+        "tags": ["LocationsV1"],
+        "operationId": "LocationsV1_GetBySportcategorySportCountryStatus",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "sportCategory",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["Motorized", "Active"]
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["UNKNOWN", "OFFLINE", "ONLINE", "ACTIVE"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of all (practice) locations.",
+            "schema": { "$ref": "#/definitions/LocationListDto" }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/locations/{id}": {
+      "get": {
+        "tags": ["LocationsV1"],
+        "operationId": "LocationsV1_GetById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieve a (practice) location.",
+            "schema": { "$ref": "#/definitions/LocationDto" }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/locations/{id}/activities": {
+      "get": {
+        "tags": ["LocationsV1"],
+        "operationId": "LocationsV1_ActivitiesByIdYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/locations/{id}/activitieswithsubscriptiontype": {
+      "get": {
+        "tags": ["LocationsV1"],
+        "operationId": "LocationsV1_ActivitiesWithSubscriptionTypeByIdYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/locations/{id}/{chipCode}": {
+      "get": {
+        "tags": ["LocationsV1"],
+        "operationId": "LocationsV1_PracticeSessionsByIdChipcodeOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "chipCode",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves all practice sessions of a transponder of a specific track",
+            "schema": { "$ref": "#/definitions/PracticeSessionsDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/sports": {
+      "get": {
+        "tags": ["SportsV1"],
+        "operationId": "SportsV1_GetBy",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of all sports.",
+            "schema": { "$ref": "#/definitions/SportListDto" }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/training/activities": {
+      "get": {
+        "tags": ["TrainingActivitiesV1"],
+        "operationId": "TrainingActivitiesV1_GetListByLocationidAccountidYearSportCountOffsetOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "locationId",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "accountId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a collection of training activities.",
+            "schema": { "$ref": "#/definitions/ActivitiesInfoDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/training/activities/{id}": {
+      "get": {
+        "tags": ["TrainingActivitiesV1"],
+        "operationId": "TrainingActivitiesV1_GetByIdChipsSessionsOrder",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "chips",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "sessions",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["asc", "desc"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves a training activity.",
+            "schema": { "$ref": "#/definitions/ActivityDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/training/activities/{id}/statistics": {
+      "get": {
+        "tags": ["TrainingActivitiesV1"],
+        "operationId": "TrainingActivitiesV1_GetStatisticsById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves the statistics of a training activity.",
+            "schema": { "$ref": "#/definitions/ActivityStatsDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/training/activities/{id}/sessions": {
+      "get": {
+        "tags": ["TrainingActivitiesV1"],
+        "operationId": "TrainingActivitiesV1_GetSessionsByIdFormatNumlaps",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "numlaps",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves the results of a training activity grouped by session.",
+            "schema": { "$ref": "#/definitions/SessionListDto" }
+          },
+          "400": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "401": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v1/training/activities/{id}/chips": {
+      "get": {
+        "tags": ["TrainingActivitiesV1"],
+        "operationId": "TrainingActivitiesV1_ChipsById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves the chips that were active in a training activity.",
+            "schema": { "$ref": "#/definitions/ChipListDto" }
+          },
+          "404": {
+            "description": "",
+            "schema": {
+              "type": "object",
+              "additionalProperties": { "type": "object" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    }
+  },
+  "definitions": {
+    "ActivitiesInfoExclLocationDto": {
+      "type": "object",
+      "properties": {
+        "activities": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ActivityDto" }
+        },
+        "activityCount": { "format": "int32", "type": "integer" }
+      }
+    },
+    "ActivityDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int64", "type": "integer" },
+        "name": { "type": "string" },
+        "startTime": { "format": "date-time", "type": "string" },
+        "endTime": { "format": "date-time", "type": "string" },
+        "frameType": { "format": "int32", "type": "integer" },
+        "location": { "$ref": "#/definitions/LocationDto" },
+        "accountId": { "format": "int64", "type": "integer" },
+        "gaUId": { "type": "string" },
+        "userId": { "type": "string" },
+        "chipLabel": { "type": "string" },
+        "chipCode": { "type": "string" },
+        "chipListDto": { "$ref": "#/definitions/ChipListDto" },
+        "practiceSessionsDto": { "$ref": "#/definitions/PracticeSessionsDto" }
+      }
+    },
+    "LocationDto": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "id": { "format": "int32", "type": "integer" },
+        "description": { "type": "string" },
+        "url": { "type": "string" },
+        "trackLength": { "format": "int32", "type": "integer" },
+        "status": {
+          "enum": ["UNKNOWN", "OFFLINE", "ONLINE", "ACTIVE"],
+          "type": "string"
+        },
+        "sport": {
+          "enum": [
+            "Unknown",
+            "Karting",
+            "MX",
+            "Car",
+            "Bike",
+            "RC",
+            "Cycling",
+            "IceSkating",
+            "Running",
+            "ModelBoatRacing",
+            "InlineSkating",
+            "StockCar",
+            "Swimming",
+            "Other",
+            "Equine"
+          ],
+          "type": "string"
+        },
+        "country": { "type": "string" },
+        "x2ServiceId": { "format": "int32", "type": "integer" },
+        "ipAddress": { "type": "string" },
+        "sections": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SectionDto" }
+        }
+      }
+    },
+    "ChipListDto": {
+      "type": "object",
+      "properties": {
+        "chips": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ChipDto" }
+        }
+      }
+    },
+    "PracticeSessionsDto": {
+      "type": "object",
+      "properties": {
+        "locations": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/PracticeSessionDto" }
+        }
+      }
+    },
+    "SectionDto": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "length": { "format": "int64", "type": "integer" },
+        "speedTrap": { "type": "boolean" }
+      }
+    },
+    "ChipDto": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "codeNr": { "format": "int64", "type": "integer" },
+        "carId": { "format": "int64", "type": "integer" },
+        "id": { "format": "int64", "type": "integer" }
+      }
+    },
+    "PracticeSessionDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int64", "type": "integer" },
+        "locationId": { "format": "int32", "type": "integer" },
+        "starttimeutc": { "format": "int64", "type": "integer" },
+        "endtimeutc": { "format": "int64", "type": "integer" },
+        "starttimelocal": { "format": "int64", "type": "integer" },
+        "endtimelocal": { "format": "int64", "type": "integer" }
+      }
+    },
+    "ActivityYearCountListDto": {
+      "type": "object",
+      "properties": {
+        "yearCounts": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ActivityYearCountDto" }
+        },
+        "total": { "format": "int32", "type": "integer" }
+      }
+    },
+    "ActivityYearCountDto": {
+      "type": "object",
+      "properties": {
+        "year": { "format": "int32", "type": "integer" },
+        "count": { "format": "int32", "type": "integer" }
+      }
+    },
+    "LocationListDto": {
+      "type": "object",
+      "properties": {
+        "locations": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/LocationDto" }
+        }
+      }
+    },
+    "ActivitiesInfoDto": {
+      "type": "object",
+      "properties": {
+        "location": { "$ref": "#/definitions/LocationDto" },
+        "activities": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ActivityExclLocationDto" }
+        },
+        "activityCount": { "format": "int32", "type": "integer" }
+      }
+    },
+    "ActivityExclLocationDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int64", "type": "integer" },
+        "name": { "type": "string" },
+        "startTime": { "format": "date-time", "type": "string" },
+        "endTime": { "format": "date-time", "type": "string" },
+        "frameType": { "format": "int32", "type": "integer" },
+        "accountId": { "format": "int64", "type": "integer" },
+        "gaUId": { "type": "string" },
+        "chipLabel": { "type": "string" },
+        "chipCode": { "type": "string" }
+      }
+    },
+    "SportListDto": {
+      "type": "object",
+      "properties": {
+        "sports": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Unknown",
+              "Karting",
+              "MX",
+              "Car",
+              "Bike",
+              "RC",
+              "Cycling",
+              "IceSkating",
+              "Running",
+              "ModelBoatRacing",
+              "InlineSkating",
+              "StockCar",
+              "Swimming",
+              "Other",
+              "Equine"
+            ],
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ActivityStatsDto": {
+      "type": "object",
+      "properties": {
+        "lapCount": { "format": "int32", "type": "integer" },
+        "fastestTime": { "type": "string" },
+        "averageTime": { "type": "string" },
+        "medianTime": { "type": "string" },
+        "totalTrainingTime": { "type": "string" },
+        "activeTrainingTime": { "type": "string" },
+        "averageSpeed": { "$ref": "#/definitions/SpeedDto" },
+        "fastestSpeed": { "$ref": "#/definitions/SpeedDto" },
+        "chip": { "$ref": "#/definitions/ChipDto" }
+      }
+    },
+    "SpeedDto": {
+      "type": "object",
+      "properties": {
+        "kph": { "format": "double", "type": "number", "readOnly": true },
+        "mps": { "format": "double", "type": "number" }
+      }
+    },
+    "SessionListDto": {
+      "type": "object",
+      "properties": {
+        "bestLap": { "$ref": "#/definitions/OverallBestLapDto" },
+        "stats": { "$ref": "#/definitions/ActivityStatsDto" },
+        "sessions": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SessionDto" }
+        },
+        "sections": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SectionDto" }
+        },
+        "onlyNewSince": { "type": "string" }
+      }
+    },
+    "OverallBestLapDto": {
+      "type": "object",
+      "properties": {
+        "sessionId": { "format": "int32", "type": "integer" },
+        "lapNr": { "format": "int64", "type": "integer" },
+        "duration": { "type": "string" },
+        "speed": { "$ref": "#/definitions/SpeedDto" }
+      }
+    },
+    "SessionDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "chipId": { "format": "int64", "type": "integer" },
+        "dateTimeStart": { "format": "date-time", "type": "string" },
+        "bestLap": { "$ref": "#/definitions/BestLapDto" },
+        "aveLapDuration": { "type": "string" },
+        "medianLapDuration": { "type": "string" },
+        "duration": { "type": "string" },
+        "laps": { "type": "array", "items": { "$ref": "#/definitions/LapDto" } }
+      }
+    },
+    "BestLapDto": {
+      "type": "object",
+      "properties": {
+        "nr": { "format": "int64", "type": "integer" },
+        "duration": { "type": "string" },
+        "speed": { "$ref": "#/definitions/SpeedDto" }
+      }
+    },
+    "LapDto": {
+      "type": "object",
+      "properties": {
+        "nr": { "format": "int64", "type": "integer" },
+        "dateTimeStart": { "format": "date-time", "type": "string" },
+        "duration": { "type": "string" },
+        "speed": { "$ref": "#/definitions/SpeedDto" },
+        "diffPrevLap": { "type": "string" },
+        "sessionDuration": { "type": "string" },
+        "status": {
+          "enum": [
+            "NONE",
+            "SLOWER",
+            "EQUAL",
+            "FASTER",
+            "SESSIONBEST",
+            "REPORTBEST"
+          ],
+          "type": "string"
+        },
+        "sections": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/LapSectionDto" }
+        },
+        "dataAttributes": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/DataAttributeDto" }
+        }
+      }
+    },
+    "LapSectionDto": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "duration": { "type": "string" },
+        "diffPrevLap": { "type": "string" },
+        "speed": { "$ref": "#/definitions/SpeedDto" }
+      }
+    },
+    "DataAttributeDto": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": ["VOLTAGE", "TEMPERATURE"], "type": "string" },
+        "value": { "type": "object" }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Apikey": {
+      "type": "apiKey",
+      "description": "API Key Authentication",
+      "name": "Apikey",
+      "in": "header"
+    }
+  }
+}

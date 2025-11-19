@@ -1,0 +1,1566 @@
+{
+  "swagger": "2.0",
+  "info": { "version": "v1", "title": "SpeedhiveEventResults" },
+  "host": "eventresultsapi-eu-prd-app01.azurewebsites.net",
+  "schemes": ["https", "http"],
+  "paths": {
+    "/api/v0.2.3/eventresults/accounts/{userId}/events": {
+      "get": {
+        "tags": ["Accounts"],
+        "operationId": "Accounts_GetEventsByUseridSportSportcategoryCountOffset",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Cycling",
+              "IceSkating",
+              "InlineSkating",
+              "Running",
+              "Swimming",
+              "Bike",
+              "Car",
+              "Karting",
+              "ModelBoatRacing",
+              "MX",
+              "RC",
+              "StockCar",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "sportCategory",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["Motorized", "Active"]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/EventDto" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/accounts/{userId}/events/{eventId}/sessions": {
+      "get": {
+        "tags": ["Accounts"],
+        "operationId": "Accounts_GetSessionsByEventByUseridEventidCountOffset",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/SessionDto" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/accounts/{userId}/sessions": {
+      "get": {
+        "tags": ["Accounts"],
+        "operationId": "Accounts_GetSessionsByUseridEventidCountOffset",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "eventId",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/SessionDto" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/accounts/{userId}/sessions/{sessionId}/classification": {
+      "get": {
+        "tags": ["Accounts"],
+        "operationId": "Accounts_GetClassificationByUseridSessionidCountOffset",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/IRunClassificationDto[IRunRowDto]"
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/championships/{id}": {
+      "get": {
+        "tags": ["Championships"],
+        "operationId": "Championships_GetChampionshipById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/ChampionshipDataDto" }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/championships/{id}/csv": {
+      "get": {
+        "tags": ["Championships"],
+        "operationId": "Championships_GetCsvById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/events": {
+      "get": {
+        "tags": ["Events"],
+        "operationId": "Events_GetAllBySportSportcategoryCountOffsetStartdateEnddateCountry",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Cycling",
+              "IceSkating",
+              "InlineSkating",
+              "Running",
+              "Swimming",
+              "Bike",
+              "Car",
+              "Karting",
+              "ModelBoatRacing",
+              "MX",
+              "RC",
+              "StockCar",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "sportCategory",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["Motorized", "Active"]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/EventDto" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/events/{eventId}": {
+      "get": {
+        "tags": ["Events"],
+        "operationId": "Events_GetByEventidSessionsGuid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sessions",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          { "name": "guid", "in": "query", "required": false, "type": "string" }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/EventDto" }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/events/{id}/sessions": {
+      "get": {
+        "tags": ["Events"],
+        "operationId": "Events_GetSessionsByIdGuid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          { "name": "guid", "in": "query", "required": false, "type": "string" }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/SessionGroupingDto" }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/health": {
+      "get": {
+        "tags": ["Health"],
+        "operationId": "Health_IndexByCancellationtoken",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        }
+      }
+    },
+    "/api/v0.2.3/eventresults/organizations/{id}": {
+      "get": {
+        "tags": ["Organizations"],
+        "operationId": "Organizations_GetById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/OrganizationDto" }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/organizations/{id}/events": {
+      "get": {
+        "tags": ["Organizations"],
+        "operationId": "Organizations_GetEventsByIdCountOffsetSportcategory",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "sportCategory",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["Motorized", "Active"]
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": { "$ref": "#/definitions/Event" }
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/organizations/{id}/championships": {
+      "get": {
+        "tags": ["Organizations"],
+        "operationId": "Organizations_GetChampionshipsByIdCountOffset",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/ChampionshipListDto" }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/organizations/{id}/championships/{championshipId}": {
+      "get": {
+        "tags": ["Organizations"],
+        "operationId": "Organizations_GetChampionshipByIdChampionshipid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "championshipId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/ChampionshipDto" }
+          }
+        },
+        "deprecated": true,
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/organizations/{id}/championships/{championshipId}/overview": {
+      "get": {
+        "tags": ["Organizations"],
+        "operationId": "Organizations_GetChampionshipOverviewAsyncByChampionshipidId",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "championshipId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          { "name": "id", "in": "path", "required": true, "type": "string" }
+        ],
+        "responses": {
+          "200": { "description": "", "schema": { "type": "string" } }
+        },
+        "deprecated": true,
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/organizations/championships/{championshipId}/overview": {
+      "get": {
+        "tags": ["Organizations"],
+        "operationId": "Organizations_GetChampionshipOverviewByChampionshipid",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "championshipId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": { "description": "", "schema": { "type": "string" } }
+        },
+        "deprecated": true,
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/search/freesearch": {
+      "get": {
+        "tags": ["Search"],
+        "operationId": "Search_FreeSearchBySearchtermSportSportcategoryCountOffsetCountryFilterSearchmodeSortbydateTypeFuzzysearch",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "searchTerm",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sport",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Unknown",
+              "Cycling",
+              "IceSkating",
+              "InlineSkating",
+              "Running",
+              "Swimming",
+              "Bike",
+              "Car",
+              "Karting",
+              "ModelBoatRacing",
+              "MX",
+              "RC",
+              "StockCar",
+              "Other",
+              "Equine"
+            ]
+          },
+          {
+            "name": "sportCategory",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["Motorized", "Active"]
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "Events",
+              "Locations",
+              "Racers",
+              "Transponders",
+              "AccountId"
+            ]
+          },
+          {
+            "name": "searchMode",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["any", "all"]
+          },
+          {
+            "name": "sortByDate",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": ["Event", "Racer", "Profile", "All"]
+          },
+          {
+            "name": "fuzzySearch",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/SearchResultsDto" }
+          }
+        },
+        "deprecated": true,
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/sessions/{id}": {
+      "get": {
+        "tags": ["Sessions"],
+        "operationId": "Sessions_GetById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/SessionDto" }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/sessions/{id}/csv": {
+      "get": {
+        "tags": ["Sessions"],
+        "operationId": "Sessions_GetCsvById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/sessions/{id}/classification": {
+      "get": {
+        "tags": ["Sessions"],
+        "operationId": "Sessions_GetClassificationById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/IRunClassificationDto[IRunRowDto]"
+            }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/sessions/{id}/lapchart": {
+      "get": {
+        "tags": ["Sessions"],
+        "operationId": "Sessions_GetLapChartById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/LapChartDto" }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/sessions/{id}/announcements": {
+      "get": {
+        "tags": ["Sessions"],
+        "operationId": "Sessions_GetAnnouncementsById",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/RunAnnouncementsDto" }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/sessions/{id}/lapdata/{finishPosition}/laps": {
+      "get": {
+        "tags": ["Sessions"],
+        "operationId": "Sessions_GetLapPageByIdFinishpositionCountOffset",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "finishPosition",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": { "$ref": "#/definitions/LapDataPageDto" }
+          }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    },
+    "/api/v0.2.3/eventresults/sessions/{sessionId}/lapdata/{finishPosition}/csv": {
+      "get": {
+        "tags": ["Sessions"],
+        "operationId": "Sessions_GetLapChartCsvBySessionidFinishposition",
+        "consumes": [],
+        "produces": [
+          "application/json",
+          "text/json",
+          "application/xml",
+          "text/xml"
+        ],
+        "parameters": [
+          {
+            "name": "sessionId",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "finishPosition",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK", "schema": { "type": "object" } }
+        },
+        "security": [{ "Apikey": [] }]
+      }
+    }
+  },
+  "definitions": {
+    "EventDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "sport": { "type": "string" },
+        "startDate": { "format": "date-time", "type": "string" },
+        "updatedAt": { "format": "date-time", "type": "string" },
+        "uploadSoftware": { "$ref": "#/definitions/UploadSoftwareDto" },
+        "hasChamp": { "type": "boolean" },
+        "location": { "$ref": "#/definitions/LocationDto" },
+        "organization": { "$ref": "#/definitions/OrganizationDto" },
+        "sessions": { "$ref": "#/definitions/SessionGroupingDto" }
+      }
+    },
+    "UploadSoftwareDto": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "LocationDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "length": { "format": "double", "type": "number" },
+        "lengthUnit": { "type": "string" },
+        "lengthLabel": { "type": "string" },
+        "country": { "$ref": "#/definitions/CountryDto" },
+        "lon": { "format": "double", "type": "number" },
+        "lat": { "format": "double", "type": "number" }
+      }
+    },
+    "OrganizationDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "logo": { "type": "string" },
+        "url": { "type": "string" },
+        "city": { "type": "string" },
+        "country": { "$ref": "#/definitions/CountryDto" }
+      }
+    },
+    "SessionGroupingDto": {
+      "type": "object",
+      "properties": {
+        "sessions": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SessionDto" }
+        },
+        "groups": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SessionGroupDto" }
+        }
+      }
+    },
+    "CountryDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "alpha2": { "type": "string" }
+      }
+    },
+    "SessionDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "comment": { "type": "string" },
+        "eventId": { "format": "int32", "type": "integer" },
+        "type": { "type": "string" },
+        "startTime": { "format": "date-time", "type": "string" },
+        "groupName": { "type": "string" },
+        "isMerge": { "type": "boolean" },
+        "resultStatus": { "type": "string" },
+        "participated": { "format": "int32", "type": "integer" },
+        "announcements": { "$ref": "#/definitions/RunAnnouncementsDto" }
+      }
+    },
+    "SessionGroupDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "date": { "format": "date-time", "type": "string" },
+        "subGroups": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SessionGroupDto" }
+        },
+        "sessions": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SessionDto" }
+        }
+      }
+    },
+    "RunAnnouncementsDto": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/AnnouncementRowDto" }
+        }
+      }
+    },
+    "AnnouncementRowDto": {
+      "type": "object",
+      "properties": {
+        "timestamp": { "format": "date-time", "type": "string" },
+        "text": { "type": "string" }
+      }
+    },
+    "IRunClassificationDto[IRunRowDto]": {
+      "type": "object",
+      "properties": {
+        "Rows": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/IRunRowDto" },
+          "readOnly": true
+        },
+        "Classes": { "type": "array", "items": { "type": "string" } },
+        "Type": {
+          "enum": [
+            "PracticeAndQualification",
+            "Race",
+            "RaceMerge",
+            "QualificationMerge",
+            "PointMerge",
+            "Null",
+            "Timetrial",
+            "Handicap"
+          ],
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "IRunRowDto": {
+      "type": "object",
+      "properties": {
+        "Position": { "format": "int32", "type": "integer" },
+        "StartNumber": { "type": "string" },
+        "Name": { "type": "string" },
+        "ResultClass": { "type": "string" },
+        "PositionInClass": { "format": "int32", "type": "integer" },
+        "AdditionalFields": { "type": "array", "items": { "type": "string" } },
+        "IsQualified": { "type": "boolean" },
+        "Status": {
+          "enum": ["Normal", "DNS", "DNF", "DQ", "Provisional"],
+          "type": "string"
+        },
+        "User": { "$ref": "#/definitions/UserInfoDto" }
+      }
+    },
+    "UserInfoDto": {
+      "type": "object",
+      "properties": {
+        "mstUserId": { "type": "string" },
+        "productCategory": {
+          "enum": ["Other", "Flex", "X2", "X2Link", "TR2"],
+          "type": "string"
+        },
+        "chip": { "$ref": "#/definitions/ChipDto" }
+      }
+    },
+    "ChipDto": {
+      "type": "object",
+      "properties": { "code": { "type": "string" } }
+    },
+    "ChampionshipDataDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int64", "type": "integer" },
+        "name": { "type": "string" },
+        "season": { "type": "string" },
+        "class": { "type": "string" },
+        "layout": {
+          "enum": [
+            "PointsPerEvent",
+            "PointsPerRun",
+            "PointsPerRunAndEventTotals"
+          ],
+          "type": "string"
+        },
+        "events": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ChampionshipEventDto" }
+        },
+        "competitors": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ChampionshipCompetitorDto" }
+        }
+      }
+    },
+    "ChampionshipEventDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "date": { "type": "string" },
+        "rounds": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ChampionshipEventRoundDto" }
+        }
+      }
+    },
+    "ChampionshipCompetitorDto": {
+      "type": "object",
+      "properties": {
+        "no": { "type": "string" },
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "class": { "type": "string" },
+        "position": { "type": "string" },
+        "total": { "format": "double", "type": "number" },
+        "diff": { "format": "double", "type": "number" },
+        "gap": { "format": "double", "type": "number" },
+        "events": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ChampionshipCompetitorEventDto" }
+        }
+      }
+    },
+    "ChampionshipEventRoundDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "shortName": { "type": "string" }
+      }
+    },
+    "ChampionshipCompetitorEventDto": {
+      "type": "object",
+      "properties": {
+        "eventId": { "format": "int32", "type": "integer" },
+        "points": { "format": "double", "type": "number" },
+        "position": { "type": "string" },
+        "rounds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChampionshipCompetitorEventRoundDto"
+          }
+        }
+      }
+    },
+    "ChampionshipCompetitorEventRoundDto": {
+      "type": "object",
+      "properties": {
+        "roundId": { "format": "int32", "type": "integer" },
+        "points": { "format": "double", "type": "number" },
+        "position": { "type": "string" }
+      }
+    },
+    "CancellationToken": {
+      "type": "object",
+      "properties": {
+        "IsCancellationRequested": { "type": "boolean", "readOnly": true },
+        "CanBeCanceled": { "type": "boolean", "readOnly": true },
+        "WaitHandle": { "$ref": "#/definitions/WaitHandle", "readOnly": true }
+      }
+    },
+    "WaitHandle": {
+      "type": "object",
+      "properties": {
+        "Handle": { "type": "object" },
+        "SafeWaitHandle": { "$ref": "#/definitions/SafeWaitHandle" }
+      }
+    },
+    "SafeWaitHandle": {
+      "type": "object",
+      "properties": {
+        "IsInvalid": { "type": "boolean", "readOnly": true },
+        "IsClosed": { "type": "boolean", "readOnly": true }
+      }
+    },
+    "Event": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "sport": { "type": "string" },
+        "startDate": { "format": "date-time", "type": "string" },
+        "updatedAt": { "format": "date-time", "type": "string" },
+        "uploadSoftware": { "$ref": "#/definitions/UploadSoftware" },
+        "location": { "$ref": "#/definitions/Location" },
+        "organization": { "$ref": "#/definitions/Organization" }
+      }
+    },
+    "UploadSoftware": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" }
+      }
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "length": { "format": "double", "type": "number" },
+        "lengthUnit": { "type": "string" },
+        "lengthLabel": { "type": "string" },
+        "country": { "$ref": "#/definitions/Country" },
+        "lon": { "format": "double", "type": "number" },
+        "lat": { "format": "double", "type": "number" }
+      }
+    },
+    "Organization": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "logo": { "type": "string" },
+        "url": { "type": "string" },
+        "city": { "type": "string" },
+        "ref": { "type": "string" },
+        "country": { "$ref": "#/definitions/Country" }
+      }
+    },
+    "Country": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "name": { "type": "string" },
+        "alpha2": { "type": "string" }
+      }
+    },
+    "ChampionshipListDto": {
+      "type": "object",
+      "properties": {
+        "championships": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/ChampionshipDto" }
+        }
+      }
+    },
+    "ChampionshipDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "organization": { "format": "int32", "type": "integer" },
+        "championshipid": { "format": "int64", "type": "integer" },
+        "name": { "type": "string" },
+        "season": { "type": "string" },
+        "html": { "type": "string" },
+        "xml": { "type": "string" },
+        "backupxml": { "type": "string" }
+      }
+    },
+    "SearchResultsDto": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SearchDto" }
+        }
+      }
+    },
+    "SearchDto": {
+      "type": "object",
+      "properties": {
+        "eid": { "format": "int32", "type": "integer" },
+        "aid": { "type": "string" },
+        "type": {
+          "enum": ["Event", "Racer", "Profile", "All"],
+          "type": "string"
+        },
+        "sport": {
+          "enum": [
+            "Unknown",
+            "Cycling",
+            "IceSkating",
+            "InlineSkating",
+            "Running",
+            "Swimming",
+            "Bike",
+            "Car",
+            "Karting",
+            "ModelBoatRacing",
+            "MX",
+            "RC",
+            "StockCar",
+            "Other",
+            "Equine"
+          ],
+          "type": "string"
+        },
+        "title": { "type": "string" },
+        "desc": { "type": "string" },
+        "cc": { "type": "string" },
+        "date": { "format": "date-time", "type": "string" }
+      }
+    },
+    "LapChartDto": {
+      "type": "object",
+      "properties": {
+        "id": { "format": "int32", "type": "integer" },
+        "positionRows": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/PositionRowDto" }
+          }
+        },
+        "startPositions": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/StartPositionDto" }
+        },
+        "hasStartGrid": { "type": "boolean" },
+        "numberOfLaps": { "format": "int32", "type": "integer" },
+        "eventId": { "format": "int32", "type": "integer" }
+      }
+    },
+    "PositionRowDto": {
+      "type": "object",
+      "properties": {
+        "position": { "format": "int32", "type": "integer" },
+        "startNumber": { "type": "string" },
+        "inLeaderLap": { "type": "boolean" },
+        "inPit": { "type": "boolean" },
+        "status": {
+          "type": "array",
+          "items": { "enum": ["GREEN", "YELLOW", "RED"], "type": "string" }
+        }
+      }
+    },
+    "StartPositionDto": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "startNumber": { "type": "string" }
+      }
+    },
+    "LapDataPageDto": {
+      "type": "object",
+      "properties": {
+        "lapDataInfo": { "$ref": "#/definitions/LapDataInfoDto" },
+        "laps": { "type": "array", "items": { "$ref": "#/definitions/LapDto" } }
+      }
+    },
+    "LapDataInfoDto": {
+      "type": "object",
+      "properties": {
+        "participantInfo": { "$ref": "#/definitions/ParticipantInfoDto" },
+        "lapCount": { "format": "int32", "type": "integer" },
+        "allLapsHaveFieldPos": { "type": "boolean" },
+        "firstLapNr": { "format": "int32", "type": "integer" },
+        "lapsDriven": { "format": "int32", "type": "integer" },
+        "classificationType": {
+          "enum": [
+            "PracticeAndQualification",
+            "Race",
+            "RaceMerge",
+            "QualificationMerge",
+            "PointMerge",
+            "Null",
+            "Timetrial",
+            "Handicap"
+          ],
+          "type": "string"
+        },
+        "classificationTypeString": {
+          "enum": [
+            "PracticeAndQualification",
+            "Race",
+            "RaceMerge",
+            "QualificationMerge",
+            "PointMerge",
+            "Null",
+            "Timetrial",
+            "Handicap"
+          ],
+          "type": "string"
+        },
+        "sessionId": { "format": "int32", "type": "integer" }
+      }
+    },
+    "LapDto": {
+      "type": "object",
+      "properties": {
+        "lapNr": { "format": "int32", "type": "integer" },
+        "timeOfDay": { "format": "date-time", "type": "string" },
+        "lapTime": { "type": "string" },
+        "diffWithLastLap": { "type": "string" },
+        "diffWithBestLap": { "type": "string" },
+        "speed": { "format": "double", "type": "number" },
+        "sectionTimes": { "type": "array", "items": { "type": "object" } },
+        "inPit": { "type": "boolean" },
+        "status": {
+          "type": "array",
+          "items": { "enum": ["GREEN", "YELLOW", "RED"], "type": "string" }
+        },
+        "fieldComparison": { "$ref": "#/definitions/LapComparisonDto" }
+      }
+    },
+    "ParticipantInfoDto": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "class": { "type": "string" },
+        "transponder": { "type": "string" },
+        "userId": { "type": "string" },
+        "startNr": { "type": "string" },
+        "startPos": { "format": "int32", "type": "integer" },
+        "fieldFinishPos": { "format": "int32", "type": "integer" },
+        "classFinishPos": { "format": "int32", "type": "integer" }
+      }
+    },
+    "LapComparisonDto": {
+      "type": "object",
+      "properties": {
+        "position": { "format": "int32", "type": "integer" },
+        "leaderLap": { "format": "int32", "type": "integer" },
+        "diff": { "$ref": "#/definitions/LapDifferenceDto" },
+        "gapAhead": { "$ref": "#/definitions/LapDifferenceDto" },
+        "gapBehind": { "$ref": "#/definitions/LapDifferenceDto" }
+      }
+    },
+    "LapDifferenceDto": {
+      "type": "object",
+      "properties": {
+        "time": { "type": "string" },
+        "laps": { "format": "int32", "type": "integer" }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Apikey": {
+      "type": "apiKey",
+      "description": "API Key Authentication",
+      "name": "Apikey",
+      "in": "header"
+    }
+  }
+}

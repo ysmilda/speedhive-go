@@ -13,7 +13,6 @@ type Client struct {
 	c *speedhive.Client
 
 	Accounts  *accountsService
-	Admin     *adminService
 	Training  *trainingService
 	Chips     *chipsService
 	Locations *locationsService
@@ -28,7 +27,6 @@ func NewClient(client *http.Client) *Client {
 	return &Client{
 		c:         c,
 		Accounts:  &accountsService{c: c},
-		Admin:     &adminService{c: c},
 		Training:  &trainingService{c: c},
 		Chips:     &chipsService{c: c},
 		Locations: &locationsService{c: c},
@@ -38,7 +36,7 @@ func NewClient(client *http.Client) *Client {
 // Health retrieves the health status of the API.
 // If the API is healthy, it will return nil.
 func (s Client) Health() error {
-	req, err := s.c.Request(http.MethodGet, "/api/v1/health", nil)
+	req, err := s.c.BuildRequest(http.MethodGet, "/api/v1/health", nil)
 	if err != nil {
 		return err
 	}

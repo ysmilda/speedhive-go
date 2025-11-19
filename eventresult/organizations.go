@@ -48,9 +48,3 @@ func (s organizationsService) GetChampionships(organizationID int, opt *Organiza
 	}
 	return res.Championships, nil
 }
-
-// GetChampionship retrieves a championship by organization ID and championship ID.
-func (s organizationsService) GetChampionship(organizationID int, championshipID int) (*Championship, error) {
-	u := fmt.Sprintf("/api/v0.2.3/eventresults/organizations/%d/championships/%d", organizationID, championshipID)
-	return speedhive.Get[Championship](s.c, u, nil)
-}

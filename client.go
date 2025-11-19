@@ -35,8 +35,8 @@ func NewClient(c *http.Client, base string) (*Client, error) {
 	}, nil
 }
 
-// request sends a request with the given method, path, data, and headers and returns the response body.
-func (c Client) Request(method string, path string, opt any) (*http.Request, error) {
+// request builds a request with the given method, path, and options.
+func (c Client) BuildRequest(method string, path string, opt any) (*http.Request, error) {
 	u := c.base
 	unescaped, err := url.PathUnescape(path)
 	if err != nil {
@@ -67,6 +67,8 @@ func (c Client) Request(method string, path string, opt any) (*http.Request, err
 			return nil, err
 		}
 		u.RawQuery = q.Encode()
+
+		fmt.Println("URL with query:", u.String())
 	}
 
 	request, err := http.NewRequest(method, u.String(), bytes.NewReader(body))
@@ -110,7 +112,7 @@ func (c Client) Do(req *http.Request, v any) error {
 }
 
 func (c Client) GetBody(path string, opt any) ([]byte, error) {
-	req, err := c.Request("GET", path, opt)
+	req, err := c.BuildRequest("GET", path, opt)
 	if err != nil {
 		return nil, err
 	}
@@ -125,7 +127,7 @@ func (c Client) GetBody(path string, opt any) ([]byte, error) {
 }
 
 func Get[T any](c *Client, path string, opt any) (*T, error) {
-	req, err := c.Request(http.MethodGet, path, opt)
+	req, err := c.BuildRequest(http.MethodGet, path, opt)
 	if err != nil {
 		return nil, err
 	}

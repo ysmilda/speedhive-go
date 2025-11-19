@@ -23,7 +23,7 @@ type EventsListOptions struct {
 // List returns a list of all events.
 // The list can be filtered by passing in the EventsListOptions.
 func (s *eventsService) List(opt *EventsListOptions) ([]EventDto, error) {
-	u := fmt.Sprintf("/api/v0.2.3/eventresults/events")
+	u := "/api/v0.2.3/eventresults/events"
 	res, err := speedhive.Get[[]EventDto](s.c, u, opt)
 	if err != nil {
 		return nil, err

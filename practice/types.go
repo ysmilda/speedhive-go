@@ -1,9 +1,5 @@
 package practice
 
-func Ptr[T any](v T) *T {
-	return &v
-}
-
 type StatusValue string
 
 const (

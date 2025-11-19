@@ -21,10 +21,3 @@ func (s championshipsService) GetCSV(championshipID int) ([]byte, error) {
 	u := fmt.Sprintf("/api/v0.2.3/eventresults/championships/%d/csv", championshipID)
 	return s.c.GetBody(u, nil)
 }
-
-// GetOverview retrieves the championship overview by ID.
-// This returns an html page that renders the championship overview.
-func (s championshipsService) GetOverview(championshipID int) ([]byte, error) {
-	u := fmt.Sprintf("/api/v0.2.3/eventresults/organizations/championships/%d/overview", championshipID)
-	return s.c.GetBody(u, nil)
-}
