@@ -67,8 +67,6 @@ func (c Client) BuildRequest(method string, path string, opt any) (*http.Request
 			return nil, err
 		}
 		u.RawQuery = q.Encode()
-
-		fmt.Println("URL with query:", u.String())
 	}
 
 	request, err := http.NewRequest(method, u.String(), bytes.NewReader(body))

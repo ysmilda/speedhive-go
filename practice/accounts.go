@@ -23,7 +23,7 @@ type AccountsActivitiesOptions struct {
 // The list can be filtered by passing in the AccountsActivitiesOptions.
 func (s accountsService) Activities(accountID string, opt *AccountsActivitiesOptions) (*ActivitiesInfoExclLocation, error) {
 	u := fmt.Sprintf("/api/v1/accounts/%s/training/activities", accountID)
-	return speedhive.Get[ActivitiesInfoExclLocation](s.c, u, nil)
+	return speedhive.Get[ActivitiesInfoExclLocation](s.c, u, opt)
 }
 
 // ActivityYears returns a list of years in which the account has training activities.
