@@ -4,6 +4,13 @@ import (
 	"github.com/ysmilda/speedhive-go"
 )
 
+type HealthInfo struct {
+	RedisConnected                     bool   `json:"redisConnected"`
+	MstPractiveApiConnected            bool   `json:"mstPracticeApiConnected"`
+	MstProductRegistrationApiConnected bool   `json:"mstProductRegistrationApiConnected"`
+	Version                            string `json:"version"`
+}
+
 type ActivitiesInfoExclLocation struct {
 	Activities    []Activity `json:"activities"`
 	ActivityCount int        `json:"activityCount"`

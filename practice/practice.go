@@ -34,14 +34,8 @@ func NewClient(client *http.Client) *Client {
 }
 
 // Health retrieves the health status of the API.
-// If the API is healthy, it will return nil.
-func (s Client) Health() error {
-	req, err := s.c.BuildRequest(http.MethodGet, "/api/v1/health", nil)
-	if err != nil {
-		return err
-	}
-
-	return s.c.Do(req, nil)
+func (s Client) Health() (*HealthInfo, error) {
+	return speedhive.Get[HealthInfo](s.c, "/api/health", nil)
 }
 
 // Sports retrieves a collection of all sports.

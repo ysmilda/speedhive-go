@@ -38,6 +38,8 @@ func NewClient(client *http.Client) *Client {
 
 // Health returns the health status of the API.
 // If the API is healthy, it will return nil.
+//
+// Deprecated: Servers only respond with a 404.
 func (s Client) Health() error {
 	req, err := s.c.BuildRequest("GET", "/api/health", nil)
 	if err != nil {
